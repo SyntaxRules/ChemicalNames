@@ -3,7 +3,7 @@
 angular.module('chemicalNamesApp')
     .factory('cationFactory', function () {
 
-        this.cations = [
+        var cations = [
             { name: 'lithium', formula: 'Li', charge: 1 },
             { name: 'sodium', formula: 'Na', charge: 1 },
             { name: 'potassium', formula: 'K', charge: 1 },
@@ -39,17 +39,17 @@ angular.module('chemicalNamesApp')
             { name: 'ammonium', formula: 'NH\u2084', charge: 1 }
         ];
 
-        this.randomCation = function () {
-            return this.cations[Math.floor(Math.random() * this.cations.length)];
+        var randomCation = function () {
+            return cations[Math.floor(Math.random() * cations.length)];
         };
 
-        this.getCation = function (index) {
-            return this.cations[index];
+        var getCation = function (index) {
+            return cations[index];
         };
 
         // Public API here
         return {
-            randomCation: this.randomCation,
-            getCation: this.getCation
+            randomCation: randomCation,
+            getCation: getCation
         };
     });

@@ -3,7 +3,7 @@
 angular.module('chemicalNamesApp')
   .factory('anionFactory', function () {
 
-    this.anions = [
+    var anions = [
         {name:'nitrite',formula:'NO\u2082',charge:1 },
         {name:'nitrate',formula:'NO\u2083',charge:1 },
         {name:'sulfite',formula:'SO\u2083',charge:2 },
@@ -37,17 +37,17 @@ angular.module('chemicalNamesApp')
         {name:'phosphide',formula:'P',charge:3 }
     ];
 
-    this.randomAnion = function() {
-        return this.anions[Math.floor(Math.random() * this.anions.length)];
+    var randomAnion = function() {
+        return anions[Math.floor(Math.random() * anions.length)];
     };
 
-    this.getAnion = function(index) {
-        return this.anions[index];
+    var getAnion = function(index) {
+        return anions[index];
     };
 
     // Public API here
     return {
-        randomAnion: this.randomAnion,
-        getAnion: this.getAnion
+        randomAnion: randomAnion,
+        getAnion: getAnion
     };
   });

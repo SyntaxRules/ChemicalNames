@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chemicalNamesApp')
-    .factory('compoundFactory', function () {
+    .factory('compoundFactory', function ($sce) {
         //suscript in unicode are \u2082 thru \u2089 (2-9)
         //HELPER METHODS
         /**
@@ -11,40 +11,68 @@ angular.module('chemicalNamesApp')
          * @param chemical
          * @returns {*}
          */
-        this.isPolyatomic = function (chemical) {
+        var isPolyatomic = function (chemical) {
             //has a subscript
             if (chemical.formula.search(/[\u2082-\u2089]/) != -1) {
                 return true;
             }
 
             //has more than one capital letter
-            if (checmical.formula.match(/[A-Z]/g).length > 1) {
+            if (chemical.formula.match(/[A-Z]/g).length > 1) {
                 return true;
             }
 
             return false;
         };
 
-        this.addSubscriptToFormula = function (formula, subscript) {
-            if (subscript < 2) {
-                return formula;
-            }
-            if (this.isPolyatomic({ formula: formula})) {
-                return '('  + formula + ')\u208' + subscript;
+        var addSubscriptToFormula = function (formula, subscript) {
+            if (isPolyatomic({ formula: formula}) == true) {
+                return '('  + formula + ')' + getSubscriptFor(subscript);
             } else {
-                return formula + '\u208' + subscript;
+                return formula + getSubscriptFor(subscript);
             }
+        };
+
+        var getSubscriptFor = function(subscript) {
+          switch(subscript) {
+              case 2:
+                  return '\u2082';
+                  break;
+              case 3:
+                  return '\u2083';
+                  break;
+              case 4:
+                  return '\u2084';
+                  break;
+              case 5:
+                  return '\u2085';
+                  break;
+              case 6:
+                  return '\u2086';
+                  break;
+              case 7:
+                  return '\u2087';
+                  break;
+              case 8:
+                  return '\u2088';
+                  break;
+              case 9:
+                  return '\u2089';
+                  break;
+              default:
+                  return '';
+          }
         };
 
         //PUBLIC FUNCTIONS
         //Maybe getMoleculeCompound?
-        this.getChemicalCompound = function (cation, anion) {
+        var getChemicalCompound = function (cation, anion) {
             var chemicalFormula = '';
             if (cation.charge == anion.charge) {
                 chemicalFormula = cation.formula + anion.formula;
             } else {
-                chemicalFormula = this.addSubscriptToFormula(cation.formula, parseInt(anion.charge)) +
-                    this.addSubscriptToFormula(anion.formula, parseInt(cation.charge));
+                chemicalFormula = addSubscriptToFormula(cation.formula, parseInt(anion.charge)) +
+                    addSubscriptToFormula(anion.formula, parseInt(cation.charge));
             }
 
             return {
@@ -55,18 +83,18 @@ angular.module('chemicalNamesApp')
             }
         };
 
-        this.getAcidCompound = function () {
+        var getAcidCompound = function () {
 
         };
 
-        this.getCovalentCompound = function () {
+        var getCovalentCompound = function () {
 
         };
 
         // Public API here
         return {
-            getChemicalCompound: this.getChemicalCompound,
-            getAcidCompound: this.getAcidCompound,
-            getCovalentCompound: this.getCovalentCompound
+            getChemicalCompound: getChemicalCompound,
+            getAcidCompound: getAcidCompound,
+            getCovalentCompound: getCovalentCompound
         };
     });
