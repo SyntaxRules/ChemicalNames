@@ -95,6 +95,7 @@ angular.module('chemicalNamesApp')
         return {
             getChemicalCompound: getChemicalCompound,
             getAcidCompound: getAcidCompound,
-            getCovalentCompound: getCovalentCompound
+            getCovalentCompound: getCovalentCompound,
+            getSubscriptFor: getSubscriptFor
         };
     });
