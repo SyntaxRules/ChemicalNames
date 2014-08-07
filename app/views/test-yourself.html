@@ -1,0 +1,37 @@
+<div class="row">
+    <h1>Test Yourself</h1>
+</div>
+<div class="col-lg-10" style="text-align: center">
+    <p class="lead" ng-bind="compound.name"></p>
+
+    <p class="lead" ng-bind="compound.formula"></p>
+
+    <!--<button class="btn btn-lg btn-success" ng-click="getRandomCompound()">New Chemical</button>-->
+    <!--<br/><br/>-->
+    <label for="userAnswer">Your Guess:</label><input id="userAnswer" type="text" ng-model="userInput"/>
+
+    <span class="glyphicon-check" ng-show="answerSubmitted && isCorrectAnswer"></span>
+    <span class="glyphicon-eye-close" ng-show="answerSubmitted && !isCorrectAnswer"></span>
+
+    <div>
+        <p>Add subscript</p>
+
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-default" ng-click="addSubscript(2)">2</button>
+            <button type="button" class="btn btn-default" ng-click="addSubscript(3)">3</button>
+            <button type="button" class="btn btn-default" ng-click="addSubscript(4)">4</button>
+            <button type="button" class="btn btn-default" ng-click="addSubscript(5)">5</button>
+            <button type="button" class="btn btn-default" ng-click="addSubscript(6)">6</button>
+            <button type="button" class="btn btn-default" ng-click="addSubscript(7)">7</button>
+            <button type="button" class="btn btn-default" ng-click="addSubscript(8)">8</button>
+            <button type="button" class="btn btn-default" ng-click="addSubscript(9)">9</button>
+        </div>
+    </div>
+    <p>
+        <button class="btn btn-lg btn-default" ng-click="testAnswer()" ng-show="!answerSubmitted">Submit</button>
+    </p>
+    <p>
+        <button class="btn btn-lg btn-succes" ng-click="getRandomCompound()" ng-show="answerSubmitted">Next Chemical
+        </button>
+    </p>
+</div>
