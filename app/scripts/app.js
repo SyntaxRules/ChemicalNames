@@ -17,6 +17,10 @@ angular
                 templateUrl: 'views/flashcards.html',
                 controller: 'FlashcardsCtrl'
             })
+            .when('/test-yourself', {
+                templateUrl: 'views/test-yourself.html',
+                controller: 'TestYourselfCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
