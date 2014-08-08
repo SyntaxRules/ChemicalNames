@@ -22,15 +22,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="header">
-        <ul class="nav nav-pills pull-right">
-            <li class="active"><a ng-href="#">Home</a></li>
-            <li><a ng-href="#/flashcards">Flashcards</a></li>
-            <li><a ng-href="#">About</a></li>
-            <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">ChemicalNames</h3>
-    </div>
+    <div ng-include="'views/header.html'" ng-controller="HeaderCtrl"></div>
 
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
@@ -82,6 +74,7 @@
         <script src="scripts/services/compoundfactory.js"></script>
     <script src="scripts/controllers/flashcards.js"></script>
     <script src="scripts/controllers/test-yourself.js"></script>
+    <script src="scripts/controllers/header.js"></script>
     <!-- endbuild -->
 </body>
 </html>
