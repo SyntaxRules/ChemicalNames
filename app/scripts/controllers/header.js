@@ -2,6 +2,7 @@
 
 angular.module('chemicalNamesApp')
     .controller('HeaderCtrl', function ($scope, $location) {
+        $scope.root = "/ChemicalNames/#";
         $scope.links = [
             {
                 name: 'Home',
@@ -26,6 +27,7 @@ angular.module('chemicalNamesApp')
             angular.forEach($scope.links, function (link) {
                 link.active = link.link == thisLink;
             });
+            console.log(thisLink);
         });
 
     });
