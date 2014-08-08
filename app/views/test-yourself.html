@@ -4,27 +4,38 @@
 <div class="col-lg-10" style="text-align: center">
     <p class="lead" ng-bind="compound.name"></p>
 
-    <p class="lead" ng-bind="compound.formula"></p>
+    <p class="lead" ng-show="answerSubmitted && !isCorrectAnswer">
+        <span class="glyphicon glyphicon-remove"></span>
+        Wrong! The correct answer is: <span ng-bind="compound.formula"></span>
+    </p>
 
-    <!--<button class="btn btn-lg btn-success" ng-click="getRandomCompound()">New Chemical</button>-->
-    <!--<br/><br/>-->
-    <label for="userAnswer">Your Guess:</label><input id="userAnswer" type="text" ng-model="userInput"/>
+    <p class="lead" ng-show="answerSubmitted && isCorrectAnswer">
+        <span class="glyphicon glyphicon-ok"></span>
+        Correct! The correct answer is: <span ng-bind="compound.formula"></span>
+    </p>
 
-    <span class="glyphicon-check" ng-show="answerSubmitted && isCorrectAnswer"></span>
-    <span class="glyphicon-eye-close" ng-show="answerSubmitted && !isCorrectAnswer"></span>
 
-    <div>
-        <p>Add subscript</p>
+    <div class="row col-lg-6">
+        <div class="input-group" ng-show="!answerSubmitted">
+            <!--<label for="userAnswer">Guess the formula:</label>-->
+            <input id="userAnswer" type="text" class="form-control" ng-model="userInput"
+                   placeholder="Guess the formula"/>
 
-        <div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-default" ng-click="addSubscript(2)">2</button>
-            <button type="button" class="btn btn-default" ng-click="addSubscript(3)">3</button>
-            <button type="button" class="btn btn-default" ng-click="addSubscript(4)">4</button>
-            <button type="button" class="btn btn-default" ng-click="addSubscript(5)">5</button>
-            <button type="button" class="btn btn-default" ng-click="addSubscript(6)">6</button>
-            <button type="button" class="btn btn-default" ng-click="addSubscript(7)">7</button>
-            <button type="button" class="btn btn-default" ng-click="addSubscript(8)">8</button>
-            <button type="button" class="btn btn-default" ng-click="addSubscript(9)">9</button>
+            <div class="input-group-btn">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Add subscript<span class="glyphicon glyphicon-chevron-down"></span></button>
+
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li><a ng-click="addSubscript(2)">2</a></li>
+                    <li><a ng-click="addSubscript(3)">3</a></li>
+                    <li><a ng-click="addSubscript(4)">4</a></li>
+                    <li><a ng-click="addSubscript(5)">5</a></li>
+                    <li><a ng-click="addSubscript(6)">6</a></li>
+                    <li><a ng-click="addSubscript(7)">7</a></li>
+                    <li><a ng-click="addSubscript(8)">8</a></li>
+                    <li><a ng-click="addSubscript(9)">9</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <p>

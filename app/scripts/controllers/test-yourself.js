@@ -17,6 +17,7 @@ angular.module('chemicalNamesApp')
 
         $scope.getRandomCompound = function () {
             $scope.answerSubmitted = false;
+            $scope.userInput = '';
             $scope.compound = compoundFactory.getChemicalCompound(cationFactory.randomCation(), anionFactory.randomAnion());
         };
 
