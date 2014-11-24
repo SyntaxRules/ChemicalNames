@@ -2,8 +2,8 @@
 
 angular.module('chemicalNamesApp')
   .controller('HeaderCtrl', function ($scope, $location) {
-    //$scope.root = "/#"; //for local development
-    $scope.root = "ChemicalNames/#"; //for gh-pages deployment
+    $scope.root = "#"; //for local development
+    //$scope.root = "ChemicalNames/#"; //for gh-pages deployment
     $scope.links = [
       {
         name: 'Home',
